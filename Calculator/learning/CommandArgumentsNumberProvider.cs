@@ -4,12 +4,22 @@ namespace learning
 {
     public class CommandArgumentsNumberProvider : INumberProvider
     {
-        public int A { get; }
-        public int B { get; }
+        public int A { get; set; }
+        public int B { get; set; }
         public CommandArgumentsNumberProvider(int a, int b)
         {
             A = a;
             B = b;
+        }
+
+        public void IncrementA()
+        {
+            A++;
+        }
+
+        public void AddNumberInBArg(int arg)
+        {
+            B = B + arg;
         }
 
         public static CommandArgumentsNumberProvider Parse(string[] args)
@@ -29,7 +39,7 @@ namespace learning
 
             return new CommandArgumentsNumberProvider(first, second);
         }
-        
+
         private static bool ValidationArgument(string argument)
         {
             int result;
